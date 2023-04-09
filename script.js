@@ -42,9 +42,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function sortFilters() {
+        const filterList = document.querySelector('.filter ul');
+        const sortedFilterList = Array.from(filterList.children).sort((a, b) => {
+            const aCheckbox = a.querySelector('input[type="checkbox"]');
+            const bCheckbox = b.querySelector('input[type="checkbox"]');
+            return bCheckbox.checked - aCheckbox.checked || a.textContent.localeCompare(b.textContent);
+        });
+
+        filterList.innerHTML = '';
+        sortedFilterList.forEach(item => filterList.appendChild(item));
+    }
+
+    function handleFilterClick(checkbox) {
+        checkbox.checked = !checkbox.checked;
+        filterProducts();
+
+        if (checkbox.checked) {
+            checkbox.closest('a').classList.add('checked');
+        } else {
+            checkbox.closest('a').classList.remove('checked');
+        }
+
+        // Call sortFilters() to rearrange the filter list items
+        sortFilters();
+    }
+
     checkboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
     filterInput.addEventListener('input', displaySearchResults);
+
+    const filterLinks = document.querySelectorAll('.filter li a');
+    filterLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const checkbox = event.currentTarget.closest('li').querySelector('input[type="checkbox"]');
+            handleFilterClick(checkbox);
+        });
+    });
+
+    sortFilters();
 });
+
+
 
 function addToCart(event) {
     const product = event.target.closest('.product');
@@ -78,3 +117,5 @@ function addToCart(event) {
 
 const addCartButtons = document.querySelectorAll('.add-cart');
 addCartButtons.forEach(button => button.addEventListener('click', addToCart));
+document.cookie = "cookieName=cookieValue; SameSite=Lax; Secure";
+
