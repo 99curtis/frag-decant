@@ -23,24 +23,33 @@ body {
     color: var(--text-color);
 }
 
-.header {
+.nav-bar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
+    justify-content: center;
+    align-self: center;
     background-color: var(--secondary-color);
+    border: 5px solid;
 }
 
-.container {
-    max-width: 1280px;
-    margin: auto;
-    width: 100%;
+.nav-bar a {
+    color: var(--text-color);
+    font-size: 2rem;
+    font-weight: 600;
+    
+    cursor: pointer;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
 }
 
 .main-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    height: max-content;
 }
 
 .filter {
@@ -49,82 +58,10 @@ body {
     margin-right: 2%;
 }
 
-.search-container {
-    position: relative;
-    margin-bottom: 1rem;
-}
-
-.search-container input[type="text"] {
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid var(--secondary-color);
-    background-color: var(--background-color);
-    color: var(--text-color);
-}
-
-.search-container ul {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: var(--background-color);
-    border: 1px solid var(--secondary-color);
-    border-radius: 5px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 999;
-}
-
-.search-container ul li {
-    padding: 0.3rem 0.5rem;
-}
-
-.search-container ul li:hover {
-    background-color: var(--secondary-color);
-}
-  
 .shop {
     flex: 3;
     max-width: 60%;
 }
-  
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--bg-color);
-    box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
-  }
-  
-.nav-logo {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-color);
-    text-decoration: none;
-  }
-  
-.nav-links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: 500;
-    list-style: none;
-    margin: 0;
-  }
-  
-.nav-link {
-    color: var(--text-color);
-    text-decoration: none;
-    margin: 0 1.5rem;
-  }
-  
-.nav-link:hover {
-    color: var(--main-color);
-  }
-  
 
 .logo {
     font-weight: bold;
@@ -205,18 +142,20 @@ nav {
 .product {
     position: relative;
     background-color: var(--bg-color);
-    padding: 1rem;
     box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
     border-radius: 0.5rem;
     overflow: hidden;
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
-    width: 100%;
+    width: 150px;
+    height: 400px;
     margin-bottom: 2%;
+    border: 1px solid var(--secondary-color); /* Added border */
+    flex-shrink: 0;
 }
 
 .product:hover {
-    transform: translateY(-5px);
+    transform: scale(1.1); /* Added hover effect */
 }
 
 .product-image {
@@ -240,24 +179,31 @@ nav {
 }
 
 .similarity-title {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-weight: 400;
     text-align: center;
     margin-bottom: 1rem;
 }
 
 .price {
+    position: absolute;
     font-size: 1.3rem;
     font-weight: 600;
     text-align: center;
     margin-top: 1rem;
+    margin-left: 0.2rem;
+    bottom: 5px;
+    left: 5px;
 }
 
 .shop-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 0.5rem;
     justify-content: center;
+    border: 5px solid;
+    height: 1800px;
 }
 
 .cart {
@@ -269,22 +215,21 @@ nav {
 }
 
 .add-cart {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
     margin-top: 1rem;
     padding: 0.5rem;
     background-color: var(--main-color);
     color: var(--text-color);
     border-radius: 5px;
     cursor: pointer;
+    bottom: 10px;
+    right: 10px;
 }
 
 .cart-icon {
     position: fixed;
     top: 1rem;
     right: 1rem;
-    font-size: 2rem;
     color: var(--main-color);
     cursor: pointer;
 }
@@ -295,10 +240,4 @@ nav {
 
 .hidden {
     display: none;
-}
-
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
 }
